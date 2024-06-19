@@ -1,3 +1,13 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: resource-profiler
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+  - name: latest
+---
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
@@ -17,3 +27,4 @@ spec:
     to:
       kind: ImageStreamTag
       name: resource-profiler:latest
+  serviceAccount: builder
