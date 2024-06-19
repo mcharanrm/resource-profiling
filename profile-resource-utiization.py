@@ -13,10 +13,9 @@
 
 import time
 
-synthetic_data = [ 'c' * 1024 + '\n' for item in range(1024 * 1024) ]
+synthetic_data = [ 'c' * 10000 + '\n' for item in range(1024 * 1024) ]
 counter = 0
 
 while True:
     counter += 1
     print(f'Entered infinite loop ... Seconds elapsed {counter}')
-    time.sleep(1)

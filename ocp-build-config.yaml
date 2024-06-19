@@ -28,3 +28,28 @@ spec:
       kind: ImageStreamTag
       name: resource-profiler:latest
   serviceAccount: builder
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: profiling-work
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resource-profiler
+  template:
+    metadata:
+      labels:
+        app: resource-profiler
+    spec:
+      containers:
+      - name: profiler
+        image: 'image-registry.openshift-image-registry.svc:5000/ocp-ai-rp/resource-profiler:latest'
+      resources:
+        requests:
+          memory: "1024Mi"
+          cpu: "1000m"
+        limits:
+          memory: "2048Mi"
+          cpu: "1200m"
