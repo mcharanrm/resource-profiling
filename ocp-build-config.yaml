@@ -46,10 +46,10 @@ spec:
       containers:
       - name: profiler
         image: 'image-registry.openshift-image-registry.svc:5000/ocp-ai-rp/resource-profiler:latest'
-      resources:
-        requests:
-          memory: "1024Mi"
-          cpu: "1000m"
-        limits:
-          memory: "2048Mi"
-          cpu: "1200m"
+        resources:
+          requests:
+            memory: "1024Mi"
+            cpu: "1000m"
+          limits:
+            memory: "2048Mi"
+            cpu: "1200m"
