@@ -12,10 +12,12 @@
 #        file_des.write('c' * 1024 + '\n')
 
 import time
+import random
 
 # Drives memory utilization
 #synthetic_data = [ 'c' * 1022 + '\n' for item in range(1024 * 1024) ]
-data = bytearray(1024 * 100)
+random_number = random.randint(50, 100)
+data = bytearray(random_number * 1048576)
 
 
 # Drives CPU Utilization
