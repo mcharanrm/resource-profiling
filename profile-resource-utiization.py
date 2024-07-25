@@ -13,9 +13,16 @@
 
 import time
 
-synthetic_data = [ 'c' * 1022 + '\n' for item in range(1024 * 1024) ]
+# Drives memory utilization
+#synthetic_data = [ 'c' * 1022 + '\n' for item in range(1024 * 1024) ]
+data = bytearray(1024 * 100)
+
+
+# Drives CPU Utilization
 counter = 0
 
 while True:
     counter += 1
-    print(f'Entered infinite loop ... Seconds elapsed {counter}')
+
+    # Drives FileSystem Utilization by writing lot of lines to STDOUT
+    print(f'Entered infinite loop ... Counter is at: {counter}')
