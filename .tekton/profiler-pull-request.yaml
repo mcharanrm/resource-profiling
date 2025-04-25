@@ -8,12 +8,10 @@ metadata:
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/cancel-in-progress: "true"
     pipelinesascode.tekton.dev/max-keep-runs: "3"
-    pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch == "master" &&
-      (".tekton/multi-arch-build-pipeline.yaml".pathChanged() ||
-      ".tekton/profiler-pull-request.yaml".pathChanged() ||
-      ".tekton/profiler-push.yaml".pathChanged() ||
-      "Containerfile.profiler".pathChanged() ||
-      "profiler".pathChanged())
+    pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch
+      == "master" && (".tekton/multi-arch-build-pipeline.yaml".pathChanged() || ".tekton/profiler-pull-request.yaml".pathChanged()
+      || ".tekton/profiler-push.yaml".pathChanged() || "Containerfile.profiler".pathChanged()
+      || "profiler".pathChanged())
   creationTimestamp: null
   labels:
     appstudio.openshift.io/application: resource-profiling
@@ -604,7 +602,8 @@ spec:
       optional: true
     - name: netrc
       optional: true
-  taskRunTemplate: {}
+  taskRunTemplate:
+    serviceAccountName: build-pipeline-profiler
   workspaces:
   - name: git-auth
     secret:
