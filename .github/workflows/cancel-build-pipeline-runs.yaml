@@ -10,6 +10,7 @@ on:
 jobs:
   comment-cancel:
     permissions:
+      issues: write
       pull-requests: write
       contents: read
     runs-on: ubuntu-latest
