@@ -10,9 +10,8 @@ on:
 jobs:
   comment-cancel:
     permissions:
-      actions: write
-      issues: write
       pull-requests: write
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the changes from branch ${{ github.head_ref }} - ${{ github.ref_name }}
