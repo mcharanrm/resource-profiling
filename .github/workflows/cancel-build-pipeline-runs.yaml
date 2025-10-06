@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the changes from branch ${{ github.ref_name }} - ${{ github.ref }}
-        uses: ${{ env.code_checkout }}
+        uses: "${{ env.code_checkout }}"
       - name: Comment pull request
-        uses: ${{ env.pr_comment }}
+        uses: "${{ env.pr_comment }}"
         with:
           message: "/cancel"
         id: comment_status
