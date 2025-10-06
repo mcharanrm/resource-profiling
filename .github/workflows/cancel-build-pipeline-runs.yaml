@@ -11,6 +11,7 @@ jobs:
   comment-cancel:
     permissions:
       issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the changes from branch ${{ github.head_ref }} - ${{ github.ref_name }}
