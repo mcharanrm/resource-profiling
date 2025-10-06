@@ -1,6 +1,6 @@
 ---
 name: cancel-konflux-on-pull-request-build-pipeline-runs
-run-name: On branch ${{ github.ref }} - ${{ github.ref_name	}} - cancel konflux build pipelines
+run-name: On branch ${{ github.head_ref }} - ${{ github.ref_name }} - cancel konflux build pipelines
 on: 
   pull_request:
     types:
@@ -10,7 +10,7 @@ jobs:
   comment-cancel:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the changes from branch ${{ github.ref_name }} - ${{ github.ref }}
+      - name: Checkout the changes from branch ${{ github.head_ref }} - ${{ github.ref_name }}
         uses: actions/checkout@v3
       - name: Comment pull request
         uses: thollander/actions-comment-pull-request@v3
@@ -19,5 +19,5 @@ jobs:
         id: comment_status
       - name: Check comment status
         run: |
-          echo "The PR ${{ github.ref_name }} from branch ${{ github.ref }} has been updated with the comment ${{ steps.comment_status.outputs.body }}"
+          echo "The PR ${{ github.ref_name }} from branch ${{ github.head_ref }} has been updated with the comment ${{ steps.comment_status.outputs.body }}"
           echo "Comment URL - ${{ steps.comment_status.outputs.html-url }}"
